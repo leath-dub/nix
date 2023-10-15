@@ -16,8 +16,9 @@
       pkgs = import nixpkgs {
         inherit system;
       };
-    in {
-      homeConfigurations = {
+    in rec {
+       packages = flake-utils.lib.flattenTree {
+       homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
@@ -34,6 +35,7 @@
             inherit inputs system;
           };
         };
+      };
       };
     });
 }
