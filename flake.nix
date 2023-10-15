@@ -10,7 +10,7 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
     let 
       system = "x86_64-linux";
       username = "cathal";
