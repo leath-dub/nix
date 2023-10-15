@@ -11,12 +11,13 @@
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ... } @ inputs:
-    flake-utils.lib.eachDefaultSystem (system: let
+    let 
+      system = "x86_64-linux";
       username = "cathal";
       pkgs = import nixpkgs {
-        inherit system;
+        inherit system; 
       };
-    in rec {
+    in {
        homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -25,7 +26,7 @@
               home = {
                 inherit username;
                 homeDirectory = /home/${username};
-                stateVersion = "23.11-pre";
+                stateVersion = "23.11";
               };
               programs.home-manager.enable = true;
             }
@@ -35,5 +36,5 @@
           };
         };
       };
-    });
+    };
 }
