@@ -10,18 +10,19 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { nixpkgs, home-manager, flake-utils, ... }:
+  outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system: let 
       username = "cathal";
       pkgs = import nixpkgs {
         inherit system; 
       };
     in {
+      packages.default = self.package.${system}.homeConfigurations.${username}.activationPackage;
       package.homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home.nix
+            ./home-manager/${username}/home.nix
           ];
           extraSpecialArgs = {
             inherit username;
