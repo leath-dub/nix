@@ -8,10 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
     flake-utils.url = "github:numtide/flake-utils";
-    # neovim-conf.url = "github:leath-dub/neovim";
+    neovim-conf.url = "github:leath-dub/nvim";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
+  outputs = { self, nixpkgs, home-manager, flake-utils, neovim-conf, ... }:
     flake-utils.lib.eachDefaultSystem (system: let 
       username = "cathal";
       pkgs = import nixpkgs {
@@ -26,7 +26,7 @@
             ./home-manager/${username}/home.nix
           ];
           extraSpecialArgs = {
-            inherit username;
+            inherit username neovim-conf;
           };
         };
       };

@@ -38,7 +38,39 @@
         "type": "github"
       }
     },
+    "neovim-conf": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1697396073,
+        "narHash": "sha256-mvAE1ind1ap/ZcEmZplJ98NZQKhFTbrKrCbRW/duLBg=",
+        "owner": "leath-dub",
+        "repo": "nvim",
+        "rev": "cd847fe5e31ae4e4ef048045d8f7d0a2a9662110",
+        "type": "github"
+      },
+      "original": {
+        "owner": "leath-dub",
+        "repo": "nvim",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
+      "locked": {
+        "lastModified": 1697009197,
+        "narHash": "sha256-viVRhBTFT8fPJTb1N3brQIpFZnttmwo3JVKNuWRVc3s=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "01441e14af5e29c9d27ace398e6dd0b293e25a54",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
       "locked": {
         "lastModified": 1697009197,
         "narHash": "sha256-viVRhBTFT8fPJTb1N3brQIpFZnttmwo3JVKNuWRVc3s=",
@@ -56,7 +88,8 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "neovim-conf": "neovim-conf",
+        "nixpkgs": "nixpkgs_2"
       }
     },
     "systems": {

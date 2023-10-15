@@ -1,4 +1,4 @@
-{ username, config, pkgs, ... }:
+{ username, neovim-conf, config, pkgs, ... }:
 
 {
 
@@ -13,6 +13,11 @@
       enable = true;
       source = ../../system/nix.conf;
       target = "./.config/nix/nix.conf";
+    };
+    neovim-conf = {
+      enable = true;
+      source = neovim-conf;
+      target = "./.config/nvim";
     };
   };
 
