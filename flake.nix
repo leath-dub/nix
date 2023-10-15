@@ -22,14 +22,7 @@
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            {
-              home = {
-                inherit username;
-                homeDirectory = /home/${username};
-                stateVersion = "23.11";
-              };
-              programs.home-manager.enable = true;
-            }
+            ./home.nix
           ];
           extraSpecialArgs = {
             inherit inputs system;
