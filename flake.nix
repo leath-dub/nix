@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
     flake-utils.url = "github:numtide/flake-utils";
+    # neovim-conf.url = "github:leath-dub/neovim";
   };
 
   outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
