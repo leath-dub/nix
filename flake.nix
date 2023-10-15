@@ -25,7 +25,7 @@
             ./home.nix
           ];
           extraSpecialArgs = {
-            inherit inputs system;
+            inherit username;
           };
         };
       };
