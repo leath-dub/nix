@@ -17,7 +17,6 @@
         inherit system;
       };
     in rec {
-       packages = flake-utils.lib.flattenTree {
        homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
@@ -35,7 +34,6 @@
             inherit inputs system;
           };
         };
-      };
       };
     });
 }
