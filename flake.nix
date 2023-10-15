@@ -10,15 +10,14 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
-    let 
-      system = "x86_64-linux";
+  outputs = { nixpkgs, home-manager, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system: let 
       username = "cathal";
       pkgs = import nixpkgs {
         inherit system; 
       };
     in {
-       homeConfigurations = {
+      package.homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
@@ -29,5 +28,5 @@
           };
         };
       };
-    };
+    });
 }
