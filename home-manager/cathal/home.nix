@@ -11,7 +11,7 @@
   home.file = {
     nix-conf = {
       enable = true;
-      source = ./system/nix.conf;
+      source = ../../system/nix.conf;
       target = "./.config/nix/nix.conf";
     };
   };
