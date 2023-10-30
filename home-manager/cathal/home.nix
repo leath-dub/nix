@@ -21,6 +21,10 @@
     };
   };
 
+  home.packages = with pkgs; [
+    zig 
+  ];
+
   programs = {
     git = {
       enable = true;
