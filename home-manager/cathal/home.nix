@@ -22,7 +22,7 @@
   };
 
   home.packages = with pkgs; [
-    zig 
+    tcc
   ];
 
   programs = {
