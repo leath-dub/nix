@@ -21,13 +21,17 @@
     };
   };
 
-  programs.git = {
-    enable = true;
-    userName = "leath-dub";
-    userEmail = "fierceinbattle@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-      color.ui = "auto";
-    }; 
+  programs = {
+    git = {
+      enable = true;
+      userName = "leath-dub";
+      userEmail = "fierceinbattle@gmail.com";
+      extraConfig = {
+        init.defaultBranch = "main";
+        color.ui = "auto";
+      }; 
+    };
+
+    neovim.enable = true;
   };
 }
