@@ -1,4 +1,4 @@
-{ username, neovim-conf, config, pkgs, ... }:
+{ username, neovim-conf, bspwm-conf, config, pkgs, ... }:
 
 {
 
@@ -14,10 +14,17 @@
       source = ../../system/nix.conf;
       target = "./.config/nix/nix.conf";
     };
+
     neovim-conf = {
       enable = true;
       source = neovim-conf;
       target = "./.config/nvim";
+    };
+
+    bspwm-conf = {
+      enable = true;
+      source = bspwm-conf;
+      target = bspwm-conf.dest;
     };
   };
 
@@ -25,6 +32,7 @@
     gcc
     nodejs
     go
+    skim
   ];
 
   programs = {
