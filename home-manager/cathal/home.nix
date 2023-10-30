@@ -24,6 +24,7 @@
   home.packages = with pkgs; [
     gcc
     nodejs
+    go
   ];
 
   programs = {
@@ -34,7 +35,7 @@
       extraConfig = {
         init.defaultBranch = "main";
         color.ui = "auto";
-      }; 
+      };
     };
 
     neovim.enable = true;
