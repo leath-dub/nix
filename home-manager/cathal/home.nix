@@ -1,4 +1,4 @@
-{ username, neovim-conf, bspwm-conf, config, pkgs, ... }:
+{ username, neovim-conf, system, config, pkgs, ... }:
 
 {
 
@@ -20,12 +20,6 @@
       source = neovim-conf;
       target = "./.config/nvim";
     };
-
-    bspwm-conf = {
-      enable = true;
-      source = bspwm-conf;
-      target = bspwm-conf.dest;
-    };
   };
 
   home.packages = with pkgs; [
@@ -33,6 +27,10 @@
     nodejs
     go
     skim
+    bspwm
+    ly
+    sxhkd
+    ncurses
   ];
 
   programs = {
@@ -47,5 +45,34 @@
     };
 
     neovim.enable = true;
+  };
+
+  xsession.windowManager.bspwm = {
+    enable = true;
+
+    monitors = let range = ["1" "2" "3" "4" "5" "6"]; in {
+        eDP1 = range;
+        HDMI1 = range;
+    };
+
+    rules = {
+      "scrcpy" = {
+          state = "floating";
+      };
+    };
+
+    settings = {
+      border_width = 2;
+      window_gap = 12;
+      split_ratio = 0.52;
+      borderless_monocle = true;
+      gapless_monocle = true;
+      focus_follows_pointer = true;
+      pointer_follows_monitor = true;
+      focused_border_color = "#c4a7e7";
+      active_border_color = "#c4a7e7";
+      normal_border_color = "#1f1d2e";
+      presel_feedback_color = "#9ccfd8";
+    };
   };
 }

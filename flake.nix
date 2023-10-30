@@ -2,34 +2,33 @@
   description = "A very basic flake";
 
   inputs = {
-    nixpkgs.url = "flake:nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    systems.url = "github:nix-systems/default";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
     neovim-conf.url = "github:leath-dub/nvim";
-    bspwm-conf.url = "github:leath-dub/bspwm";
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, neovim-conf, bspwm-conf, ... }:
-    flake-utils.lib.eachDefaultSystem (system: let 
-      username = "cathal";
-      pkgs = import nixpkgs {
-        inherit system;
-      };
+  outputs = { self, nixpkgs, systems, home-manager, neovim-conf, ... }: let
+    username = "cathal";
+    forAllSystems = fn:
+      nixpkgs.lib.genAttrs (import systems) (system: fn { pkgs = nixpkgs.legacyPackages.${system}; inherit system; });
     in {
-      packages.default = self.package.${system}.homeConfigurations.${username}.activationPackage;
-      package.homeConfigurations = {
+      hm = forAllSystems ({ pkgs, system }: {
         "${username}" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
             ./home-manager/${username}/home.nix
           ];
           extraSpecialArgs = {
-            inherit username neovim-conf bspwm-conf;
+            inherit username neovim-conf system;
           };
         };
-      };
-    });
+      });
+      packages = forAllSystems ({ pkgs, system }: {
+        default = self.hm.${system}.${username}.activationPackage;
+      });
+    };
 }
