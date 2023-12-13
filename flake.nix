@@ -9,9 +9,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-conf.url = "github:leath-dub/nvim";
+    sxhkd-conf.url = "github:leath-dub/sxhkd-conf";
   };
 
-  outputs = { self, nixpkgs, systems, home-manager, neovim-conf, ... }: let
+  outputs = { self, nixpkgs, systems, home-manager, neovim-conf, sxhkd-conf, ... }: let
     username = "cathal";
     forAllSystems = fn:
       nixpkgs.lib.genAttrs (import systems) (system: fn { pkgs = nixpkgs.legacyPackages.${system}; inherit system; });
@@ -23,7 +24,7 @@
             ./home-manager/${username}/home.nix
           ];
           extraSpecialArgs = {
-            inherit username neovim-conf system;
+            inherit username neovim-conf sxhkd-conf system;
           };
         };
       });

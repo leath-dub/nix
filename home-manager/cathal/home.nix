@@ -1,4 +1,4 @@
-{ username, neovim-conf, system, config, pkgs, ... }:
+{ username, neovim-conf, sxhkd-conf, system, config, pkgs, ... }:
 
 {
 
@@ -19,6 +19,12 @@
       enable = true;
       source = neovim-conf;
       target = "./.config/nvim";
+    };
+
+    sxhkd-conf = {
+      enable = true;
+      source = sxhkd-conf;
+      target = "./.config/sxhkd";
     };
   };
 
