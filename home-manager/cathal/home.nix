@@ -47,12 +47,6 @@
       target = "./.local/share/fonts/NerdFontSymbols";
     };
 
-    openrc = {
-      enable = true;
-      source = ../../system/services;
-      target = "./.config/init.d";
-    };
-
     zig = {
       enable = true;
       source = import ../../modules/zig.nix pkgs;
@@ -98,12 +92,15 @@
     btop
     tldr
     helix
-    zls
     bat
     zellij
 
     run-vbooxd
     templ
+
+    # Language servers and linters
+    zls
+    marksman
 
     nixgl.nixGLIntel
     eww
