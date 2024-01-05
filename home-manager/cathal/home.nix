@@ -30,7 +30,7 @@
     wallpaper = {
       enable = true;
       text = ''
-      fox.jpg
+      totoro.jpg
       '';
       target = "./Pictures/.wallpaper";
     };
@@ -45,6 +45,42 @@
       enable = true;
       source = import ../../modules/nerdfont.nix pkgs;
       target = "./.local/share/fonts/NerdFontSymbols";
+    };
+
+    openrc = {
+      enable = true;
+      source = ../../system/services;
+      target = "./.config/init.d";
+    };
+
+    zig = {
+      enable = true;
+      source = import ../../modules/zig.nix pkgs;
+      target = "./.local/bin/zig";
+    };
+
+    cursor = {
+      enable = true;
+      source = import ../../modules/cursor.nix pkgs;
+      target = "./.local/share/icons/";
+    };
+
+    cursor_enable = {
+      enable = true;
+      text = ''
+      [icon theme]
+      Inherits=macOS-BigSur-White
+      '';
+      target = "./.icons/default/index.theme";
+    };
+
+    xresources = {
+      enable = true;
+      text = ''
+      Xcursor.theme: macOS-BigSur-White
+      Xcursor.size: 28
+      '';
+      target = "./.Xresources";
     };
   };
 
@@ -61,6 +97,10 @@
     lazygit
     btop
     tldr
+    helix
+    zls
+    bat
+    zellij
 
     run-vbooxd
     templ
