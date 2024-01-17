@@ -47,6 +47,12 @@
       target = "./.local/share/fonts/NerdFontSymbols";
     };
 
+    basefont = {
+      enable = true;
+      source = "${pkgs.liberation_ttf}/share/fonts/truetype";
+      target = "./.local/share/fonts/Liberation";
+    };
+
     zig = {
       enable = true;
       source = import ../../modules/zig.nix pkgs;
@@ -94,6 +100,7 @@
     helix
     bat
     zellij
+    eza
 
     run-vbooxd
     templ
@@ -101,6 +108,7 @@
     # Language servers and linters
     zls
     marksman
+    ltex-ls
 
     nixgl.nixGLIntel
     eww

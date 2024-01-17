@@ -68,7 +68,7 @@ sudo apk update
 sudo apk upgrade
 
 log "Adding packages"
-sudo apk add gpm font-terminus doas-sudo-shim curl xz gcompat bash gdb brightnessctl brightnessctl-udev alsa-utils alsaconf xdotool
+sudo apk add gpm font-terminus doas-sudo-shim curl xz gcompat bash gdb brightnessctl brightnessctl-udev alsa-utils alsaconf xdotool xprop
 
 # Alias is not needed anymore
 unalias sudo

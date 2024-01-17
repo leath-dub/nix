@@ -5,8 +5,8 @@ pkgs.stdenv.mkDerivation {
   version = "0.12.0-dev";
 
   src = pkgs.fetchurl {
-    url = "https://ziglang.org/builds/zig-linux-x86_64-0.12.0-dev.1861+412999621.tar.xz";
-    hash = "sha256-D1b7hjiNjoKHG/DYfPJCnHIFPAOE0HCB79yLRAGcl/k=";
+    url = "https://ziglang.org/download/0.11.0/zig-linux-x86_64-0.11.0.tar.xz";
+    hash = "sha256-LQDnif7E9xeQpue/g/+R1WSUPF7oQ8X9lm78R0tCMEc=";
   };
 
   phases = [ "installPhase" ];
